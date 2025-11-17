@@ -1,0 +1,198 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+uv.lock
+
+# Virtual Environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Testing
+.pytest_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+*.log
+.hypothesis/
+htmlcov/
+.cache
+
+# Photo Organizer - Project Specific
+# Cache and databases
+.photo_organizer_cache.db
+.photo_organizer_cache.db-journal
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Logs and reports
+photo_organizer_*.log
+duplicates_report.txt
+transaction_log.json
+*.log
+
+# Test fixtures (uncomment if you don't want to commit test media files)
+# tests/fixtures/*.jpg
+# tests/fixtures/*.jpeg
+# tests/fixtures/*.png
+# tests/fixtures/*.heic
+# tests/fixtures/*.mp4
+# tests/fixtures/*.mov
+
+# Test photos directory 
+test_photos/ 
+
+# Output directories from test runs
+test_output/
+temp_output/
+tmp-runs/
+
+# IDEs and Editors
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+.idea_modules/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.*.sw[a-z]
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+secrets.yaml
+api_keys.txt
+
+# Configuration overrides (if you want to keep default config.yaml in repo)
+config.local.yaml
+config.override.yaml
+config.yaml # (uncomment if you don't want to commit config.yaml)
+
+# Backup files
+*.bak
+*.backup
+*.BKP
+*.old
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Documentation builds
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Profiling data
+*.prof
+*.lprof
+
+# Claude Code
+.claude/
+.aitk/
+CLAUDE.md 
+DECISIONS-SUMMARY.md 
+CLAUDE-RESOURCES.md
+FILENAME_PATTERNS.md
