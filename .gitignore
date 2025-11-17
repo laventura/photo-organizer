@@ -156,7 +156,7 @@ api_keys.txt
 # Configuration overrides (if you want to keep default config.yaml in repo)
 config.local.yaml
 config.override.yaml
-config.yaml # (uncomment if you don't want to commit config.yaml)
+config.yaml
 
 # Backup files
 *.bak

@@ -1,0 +1,137 @@
+# Photo Organizer Configuration
+
+# Location settings
+location:
+  # LocationIQ API key (optional, leave empty to use only Nominatim)
+  locationiq_api_key: ""
+  # 
+
+  # Major US cities (use State-City format for these)
+  major_cities:
+    - New York
+    - Los Angeles
+    - Chicago
+    - Houston
+    - Phoenix
+    - Philadelphia
+    - San Antonio
+    - San Diego
+    - Dallas
+    - San Francisco
+    - Seattle
+    - Boston
+    - Miami
+    - Atlanta
+    - Denver
+    - Las Vegas
+    - Portland
+    - Austin
+    - Nashville
+    - Washington
+
+  # US National Parks (use State-Park format)
+  national_parks:
+    - Yosemite
+    - Yellowstone
+    - Grand Canyon
+    - Zion
+    - Rocky Mountain
+    - Acadia
+    - Grand Teton
+    - Olympic
+    - Glacier
+    - Bryce Canyon
+    - Arches
+    - Joshua Tree
+    - Great Smoky Mountains
+    - Shenandoah
+    - Canyonlands
+    - Mount Rainier
+    - Sequoia
+    - Kings Canyon
+    - Death Valley
+    - Badlands
+
+  # Clustering distance in miles (photos within this distance use same location)
+  clustering_distance_miles: 25.0
+
+# File extensions
+file_extensions:
+  images:
+    - .jpg
+    - .jpeg
+    - .png
+    - .heic
+    - .cr2
+    - .nef
+    - .arw
+    - .dng
+    - .gif
+    - .bmp
+    - .tiff
+
+  videos:
+    - .mp4
+    - .mov
+    - .avi
+    - .mkv
+    - .m4v
+    - .3gp
+    - .mts
+    - .m2ts
+
+# Processing settings
+processing:
+  # Number of parallel threads (0 = auto-detect CPU count)
+  threads: 0
+
+  # Batch size for processing
+  batch_size: 100
+
+  # Enable file integrity verification after copy/move
+  verify_integrity: true
+
+  # Cache precision (decimal places for GPS coordinates)
+  cache_precision: 4
+
+# Organization settings
+organization:
+  # Filename pattern for organized files
+  # Available placeholders:
+  #   {date}          - Full date in YYYY-MM-DD format
+  #   {year}          - Four-digit year (YYYY)
+  #   {month}         - Two-digit month (MM)
+  #   {day}           - Two-digit day (DD)
+  #   {original_name} - Original filename without extension
+  #   {ext}           - File extension (with dot)
+  #   {counter}       - Counter for duplicates (empty for first occurrence)
+  #
+  # Examples:
+  #   "{date}_{original_name}{ext}"           -> 2023-06-15_IMG_1234.jpg
+  #   "{year}{month}{day}_{original_name}{ext}" -> 20230615_IMG_1234.jpg
+  #   "{original_name}_{date}{ext}"           -> IMG_1234_2023-06-15.jpg
+  #   "{year}/{month}_{original_name}{ext}"   -> 2023/06_IMG_1234.jpg (includes directory)
+  #
+  filename_pattern: "{date}_{original_name}{ext}"
+
+# Safety settings
+safety:
+  # Require confirmation before processing
+  require_confirmation: true
+
+  # Default operation mode ('move' or 'copy')
+  default_mode: move
+
+  # Enable dry-run by default
+  dry_run_default: false
+
+# Logging settings
+logging:
+  # Log level (DEBUG, INFO, WARNING, ERROR)
+  level: INFO
+
+  # Enable verbose logging
+  verbose: false
+
+  # Log file name pattern (uses strftime format)
+  log_file_pattern: "photo_organizer_%Y%m%d_%H%M%S.log"

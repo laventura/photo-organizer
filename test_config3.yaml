@@ -1,0 +1,2 @@
+organization:
+  filename_pattern: "{original_name}{ext}"

@@ -1,0 +1,2 @@
+organization:
+  filename_pattern: "{year}{month}{day}_{original_name}{ext}"
