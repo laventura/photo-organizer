@@ -219,9 +219,43 @@ Examples:
     config_path = Path(args.config) if args.config else None
     config = load_config(config_path)
 
-    # Setup logging
+    # Validate paths (before logging setup, so we can create destination for log file)
+    source_path = Path(args.source).expanduser().resolve()
+    destination_path = Path(args.destination).expanduser().resolve()
+
+    if not source_path.exists():
+        print(f"ERROR: Source path does not exist: {source_path}", file=sys.stderr)
+        sys.exit(1)
+
+    if not source_path.is_dir():
+        print(f"ERROR: Source path is not a directory: {source_path}", file=sys.stderr)
+        sys.exit(1)
+
+    # Validate/create destination directory
+    if not destination_path.exists():
+        if args.dry_run:
+            print(f"WARNING: Destination path does not exist: {destination_path}", file=sys.stderr)
+            print("WARNING: This is a dry run, so the directory will not be created", file=sys.stderr)
+        else:
+            print(f"Creating destination directory: {destination_path}")
+            try:
+                destination_path.mkdir(parents=True, exist_ok=True)
+                print("Destination directory created successfully")
+            except Exception as e:
+                print(f"ERROR: Failed to create destination directory: {e}", file=sys.stderr)
+                sys.exit(1)
+    elif not destination_path.is_dir():
+        print(f"ERROR: Destination path exists but is not a directory: {destination_path}", file=sys.stderr)
+        sys.exit(1)
+
+    # Check disk space
+    if not args.dry_run:
+        if not check_disk_space(destination_path):
+            sys.exit(1)
+
+    # Setup logging (after destination validation/creation)
     log_file_pattern = config.get('logging', {}).get('log_file_pattern', 'photo_organizer_%Y%m%d_%H%M%S.log')
-    log_file = Path(args.destination) / datetime.now().strftime(log_file_pattern)
+    log_file = destination_path / datetime.now().strftime(log_file_pattern)
 
     if args.dry_run:
         log_file = None  # Don't create log file for dry runs
@@ -231,23 +265,6 @@ Examples:
     logger.info("=" * 80)
     logger.info("Photo/Video Organizer Starting")
     logger.info("=" * 80)
-
-    # Validate paths
-    source_path = Path(args.source).expanduser().resolve()
-    destination_path = Path(args.destination).expanduser().resolve()
-
-    if not source_path.exists():
-        logger.error(f"Source path does not exist: {source_path}")
-        sys.exit(1)
-
-    if not source_path.is_dir():
-        logger.error(f"Source path is not a directory: {source_path}")
-        sys.exit(1)
-
-    # Check disk space
-    if not args.dry_run:
-        if not check_disk_space(destination_path):
-            sys.exit(1)
 
     # Initialize location intelligence
     locationiq_key = args.locationiq_key or config.get('location', {}).get('locationiq_api_key')
